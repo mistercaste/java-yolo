@@ -1,4 +1,4 @@
-package edu.ml.tensorflow.model;
+package cli.tensorflow.model;
 
 /**
  * Model to store the position of the bounding boxes
@@ -8,8 +8,8 @@ public class BoxPosition {
     private float top;
     private float right;
     private float bottom;
-    private float width;
-    private float height;
+    private final float width;
+    private final float height;
 
     public BoxPosition(float left, float top, float width, float height) {
         this.left = left;

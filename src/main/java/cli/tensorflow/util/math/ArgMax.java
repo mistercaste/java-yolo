@@ -1,14 +1,11 @@
-package edu.ml.tensorflow.util.math;
+package cli.tensorflow.util.math;
 
 /**
  * ArgMax function to select the higher value and its index from the array.
- *
- * Created by Zoltan Szabo on 1/5/18.
- * URL: https://github.com/szaza/android-yolo-v2
  */
 public class ArgMax {
 
-    private double[] params;
+    private final double[] params;
 
     public ArgMax(double[] params) {
         this.params = params;
@@ -25,9 +22,9 @@ public class ArgMax {
         return new Result(maxIndex, params[maxIndex]);
     }
 
-    public class Result {
-        private int index;
-        private double maxValue;
+    public static class Result {
+        private final int index;
+        private final double maxValue;
 
         public Result(int index, double maxValue) {
             this.index = index;

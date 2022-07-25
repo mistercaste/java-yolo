@@ -1,4 +1,4 @@
-package edu.ml.tensorflow;
+package cli.tensorflow;
 
 /**
  * Configuration file for TensorFlow Java Yolo application

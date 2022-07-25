@@ -1,12 +1,12 @@
-package edu.ml.tensorflow.util.math;
+package cli.tensorflow.util.math;
+
+import java.util.Arrays;
 
 /**
  * Implementation of the SoftMax function.
  * For more information please read this article:
- * https://en.wikipedia.org/wiki/Softmax_function
  *
- * Created by Zoltan Szabo on 1/5/18.
- * URL: https://github.com/szaza/android-yolo-v2
+ * @see <a href="https://en.wikipedia.org/wiki/Softmax_function>Softmax Function</a>
  */
 
 public class SoftMax {
@@ -19,17 +19,15 @@ public class SoftMax {
     public double[] getValue() {
         double sum = 0;
 
-        for (int i=0; i<params.length; i++) {
+        for (int i = 0; i < params.length; i++) {
             params[i] = Math.exp(params[i]);
             sum += params[i];
         }
 
         if (Double.isNaN(sum) || sum < 0) {
-            for (int i=0; i<params.length; i++) {
-                params[i] = 1.0 / params.length;
-            }
+            Arrays.fill(params, 1.0 / params.length);
         } else {
-            for (int i=0; i<params.length; i++) {
+            for (int i = 0; i < params.length; i++) {
                 params[i] = params[i] / sum;
             }
         }

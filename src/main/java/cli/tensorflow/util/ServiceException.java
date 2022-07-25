@@ -1,4 +1,4 @@
-package edu.ml.tensorflow.util;
+package cli.tensorflow.util;
 
 /**
  * ServiceException to throw in case if something wrong happen in the service layer.

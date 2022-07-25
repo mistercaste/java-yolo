@@ -1,4 +1,4 @@
-package edu.ml.tensorflow.model;
+package cli.tensorflow.model;
 
 /**
  * Model to store the data of a bounding box

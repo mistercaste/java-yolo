@@ -1,4 +1,4 @@
-package edu.ml.tensorflow.model;
+package cli.tensorflow.model;
 
 /**
  * An immutable result returned by a recognizer describing what was recognized.

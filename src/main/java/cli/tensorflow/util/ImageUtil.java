@@ -1,8 +1,8 @@
-package edu.ml.tensorflow.util;
+package cli.tensorflow.util;
 
-import edu.ml.tensorflow.Config;
-import edu.ml.tensorflow.model.BoxPosition;
-import edu.ml.tensorflow.model.Recognition;
+import cli.tensorflow.Config;
+import cli.tensorflow.model.BoxPosition;
+import cli.tensorflow.model.Recognition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -64,7 +64,7 @@ public class ImageUtil {
         try {
             ImageIO.write(image,"jpg", new File(target));
         } catch (IOException e) {
-            LOGGER.error("Unagle to save image {}!", target);
+            LOGGER.error("Unable to save image {}!", target);
         }
     }
 

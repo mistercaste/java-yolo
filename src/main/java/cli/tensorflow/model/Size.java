@@ -1,4 +1,4 @@
-package edu.ml.tensorflow.model;
+package cli.tensorflow.model;
 
 /**
  * Size class to store information about the object size.

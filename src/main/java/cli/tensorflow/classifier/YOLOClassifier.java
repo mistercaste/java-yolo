@@ -1,10 +1,10 @@
-package edu.ml.tensorflow.classifier;
+package cli.tensorflow.classifier;
 
-import edu.ml.tensorflow.model.BoundingBox;
-import edu.ml.tensorflow.model.BoxPosition;
-import edu.ml.tensorflow.model.Recognition;
-import edu.ml.tensorflow.util.math.ArgMax;
-import edu.ml.tensorflow.util.math.SoftMax;
+import cli.tensorflow.model.Recognition;
+import cli.tensorflow.model.BoundingBox;
+import cli.tensorflow.model.BoxPosition;
+import cli.tensorflow.util.math.ArgMax;
+import cli.tensorflow.util.math.SoftMax;
 import org.apache.commons.math3.analysis.function.Sigmoid;
 import org.tensorflow.Tensor;
 
@@ -15,11 +15,10 @@ import java.util.PriorityQueue;
 
 /**
  * YOLOClassifier class implemented in Java by using the TensorFlow Java API
- * I also used this class in my android sample application here: https://github.com/szaza/android-yolo-v2
  */
 public class YOLOClassifier {
     private final static float OVERLAP_THRESHOLD = 0.5f;
-    private final static double anchors[] = {1.08,1.19,  3.42,4.41,  6.63,11.38,  9.42,5.11,  16.62,10.52};
+    private final static double[] anchors = {1.08,1.19,  3.42,4.41,  6.63,11.38,  9.42,5.11,  16.62,10.52};
     private final static int SIZE = 13;
     private final static int MAX_RECOGNIZED_CLASSES = 24;
     private final static float THRESHOLD = 0.5f;
@@ -58,7 +57,7 @@ public class YOLOClassifier {
     public List<Recognition> classifyImage(final float[] tensorFlowOutput, final List<String> labels) {
         int numClass = (int) (tensorFlowOutput.length / (Math.pow(SIZE,2) * NUMBER_OF_BOUNDING_BOX) - 5);
         BoundingBox[][][] boundingBoxPerCell = new BoundingBox[SIZE][SIZE][NUMBER_OF_BOUNDING_BOX];
-        PriorityQueue<Recognition> priorityQueue = new PriorityQueue(MAX_RECOGNIZED_CLASSES, new RecognitionComparator());
+        PriorityQueue<Recognition> priorityQueue = new PriorityQueue<>(MAX_RECOGNIZED_CLASSES, new RecognitionComparator());
 
         int offset = 0;
         for (int cy=0; cy<SIZE; cy++) {        // SIZE * SIZE cells
@@ -108,7 +107,7 @@ public class YOLOClassifier {
     }
 
     private List<Recognition> getRecognition(final PriorityQueue<Recognition> priorityQueue) {
-        List<Recognition> recognitions = new ArrayList();
+        List<Recognition> recognitions = new ArrayList<>();
 
         if (priorityQueue.size() > 0) {
             // Best recognition
@@ -152,7 +151,7 @@ public class YOLOClassifier {
     }
 
     // Intentionally reversed to put high confidence at the head of the queue.
-    private class RecognitionComparator implements Comparator<Recognition> {
+    private static class RecognitionComparator implements Comparator<Recognition> {
         @Override
         public int compare(final Recognition recognition1, final Recognition recognition2) {
             return Float.compare(recognition2.getConfidence(), recognition1.getConfidence());

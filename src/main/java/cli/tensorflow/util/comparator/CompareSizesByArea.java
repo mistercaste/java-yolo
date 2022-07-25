@@ -1,15 +1,12 @@
-package edu.ml.tensorflow.util.comparator;
+package cli.tensorflow.util.comparator;
 
 
-import edu.ml.tensorflow.model.Size;
+import cli.tensorflow.model.Size;
 
 import java.util.Comparator;
 
 /**
  * Compares two {@code Size}s based on their areas.
- *
- * Created by Zoltan Szabo on 1/13/18.
- * URL: https://github.com/szaza/android-yolo-v2
  */
 public class CompareSizesByArea implements Comparator<Size> {
     @Override
